@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:text="Press the Chuck Norris face to generate a new joke"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <ScrollView
@@ -31,7 +31,10 @@
     <TextView
         android:id="@+id/joke_content"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textColor="@android:color/white"
+        android:textSize="25dp"/>
     </ScrollView>
 
     <ImageView
