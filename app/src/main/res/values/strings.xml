@@ -1,7 +1,4 @@
 <resources>
-    <string name="app_name">chuck-norris-jokes</string>
-
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="app_name">Chuck Norris Jokes</string>
     <string name="network_error">The network request was intercepted by Chuck Norris. Sorry, try again :(</string>
 </resources>
