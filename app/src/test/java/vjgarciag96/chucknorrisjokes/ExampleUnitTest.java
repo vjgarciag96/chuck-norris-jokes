@@ -1,4 +1,4 @@
-package vjgarciag96.chuck_norris_jokes;
+package vjgarciag96.chucknorrisjokes;
 
 import org.junit.Test;
 

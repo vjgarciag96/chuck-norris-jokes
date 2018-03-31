@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0099cc"
-    tools:context="vjgarciag96.chuck_norris_jokes.HomeActivity">
+    tools:context="vjgarciag96.chucknorrisjokes.ui.HomeActivity">
 
     <TextView
         android:id="@+id/home_title"
