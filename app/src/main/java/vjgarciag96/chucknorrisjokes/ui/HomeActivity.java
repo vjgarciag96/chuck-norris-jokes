@@ -1,5 +1,6 @@
 package vjgarciag96.chucknorrisjokes.ui;
 
+import android.media.MediaPlayer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,17 +28,27 @@ public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.joke_content) TextView jokeContentTextView;
     @BindView(R.id.progress_bar) ProgressBar progressBar;
 
+    private MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        initializeMediaPlayer();
         ButterKnife.bind(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        stopMediaPlayer();
+        super.onDestroy();
     }
 
     @OnClick(R.id.chuck_face)
     public void onNewJokeButtonClicked() {
         cleanJoke();
         showProgressBar();
+        startChuckSound();
         APIManager.getRandomJokeService().getRandomJoke().enqueue(new Callback<APIResponse>() {
             @Override
             public void onResponse(Call<APIResponse> call, Response<APIResponse> response) {
@@ -105,4 +116,17 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void initializeMediaPlayer(){
+        mediaPlayer = MediaPlayer.create(this, R.raw.chuck_norris_sound);
+    }
+
+    private void startChuckSound(){
+        mediaPlayer.start();
+    }
+
+    private void stopMediaPlayer(){
+        mediaPlayer.stop();
+    }
+
 }
