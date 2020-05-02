@@ -1,19 +1,18 @@
 package vjgarciag96.chucknorrisjokes.ui;
 
 import android.media.MediaPlayer;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,17 +24,25 @@ public class HomeActivity extends AppCompatActivity {
 
     private static final String TAG = "Home";
 
-    @BindView(R.id.joke_content) TextView jokeContentTextView;
-    @BindView(R.id.progress_bar) ProgressBar progressBar;
-
     private MediaPlayer mediaPlayer;
+
+    private ProgressBar progressBar;
+    private TextView jokeContentTextView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initializeMediaPlayer();
-        ButterKnife.bind(this);
+        progressBar = findViewById(R.id.progressBar);
+        jokeContentTextView = findViewById(R.id.jokeContent);
+        ImageView chuckFace = findViewById(R.id.chuck_face);
+        chuckFace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onNewJokeButtonClicked();
+            }
+        });
     }
 
     @Override
@@ -44,7 +51,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    @OnClick(R.id.chuck_face)
     public void onNewJokeButtonClicked() {
         cleanJoke();
         showProgressBar();
