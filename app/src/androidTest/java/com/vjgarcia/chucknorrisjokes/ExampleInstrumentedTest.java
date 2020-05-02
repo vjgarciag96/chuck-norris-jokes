@@ -1,4 +1,4 @@
-package vjgarciag96.chucknorrisjokes;
+package com.vjgarcia.chucknorrisjokes;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;

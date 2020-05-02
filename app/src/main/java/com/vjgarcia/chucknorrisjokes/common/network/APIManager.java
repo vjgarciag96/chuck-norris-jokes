@@ -1,6 +1,6 @@
-package vjgarciag96.chucknorrisjokes.common.network;
+package com.vjgarcia.chucknorrisjokes.common.network;
 
-import vjgarciag96.chucknorrisjokes.data.remote.service.RandomJokeService;
+import com.vjgarcia.chucknorrisjokes.data.remote.service.RandomJokeService;
 
 /**
  * Created by victor on 31/03/18.

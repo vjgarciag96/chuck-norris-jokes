@@ -1,4 +1,4 @@
-package vjgarciag96.chucknorrisjokes.data.model;
+package com.vjgarcia.chucknorrisjokes.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

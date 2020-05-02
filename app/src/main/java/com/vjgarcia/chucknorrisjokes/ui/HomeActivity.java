@@ -1,4 +1,4 @@
-package vjgarciag96.chucknorrisjokes.ui;
+package com.vjgarcia.chucknorrisjokes.ui;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -16,9 +16,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import vjgarciag96.chucknorrisjokes.R;
-import vjgarciag96.chucknorrisjokes.common.network.APIManager;
-import vjgarciag96.chucknorrisjokes.data.model.APIResponse;
+import com.vjgarcia.chucknorrisjokes.common.network.APIManager;
+
+import com.chucknorrisjokes.R;
+
+import com.vjgarcia.chucknorrisjokes.data.model.APIResponse;
 
 public class HomeActivity extends AppCompatActivity {
 

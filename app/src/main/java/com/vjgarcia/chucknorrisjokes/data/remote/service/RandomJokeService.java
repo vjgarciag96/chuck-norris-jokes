@@ -1,8 +1,8 @@
-package vjgarciag96.chucknorrisjokes.data.remote.service;
+package com.vjgarcia.chucknorrisjokes.data.remote.service;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import vjgarciag96.chucknorrisjokes.data.model.APIResponse;
+import com.vjgarcia.chucknorrisjokes.data.model.APIResponse;
 
 
 /**
