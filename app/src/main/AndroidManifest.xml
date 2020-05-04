@@ -10,15 +10,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".ChuckNorrisApp"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.vjgarcia.chucknorrisjokes.ui.HomeActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:name=".ui.JokesActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
