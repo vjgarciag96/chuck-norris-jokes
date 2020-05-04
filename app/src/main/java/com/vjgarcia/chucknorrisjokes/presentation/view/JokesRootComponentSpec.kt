@@ -1,4 +1,4 @@
-package com.vjgarcia.chucknorrisjokes.ui
+package com.vjgarcia.chucknorrisjokes.presentation.view
 
 import com.facebook.litho.Component
 import com.facebook.litho.ComponentContext
@@ -7,7 +7,7 @@ import com.facebook.litho.annotations.OnCreateLayout
 import com.facebook.litho.annotations.Prop
 import com.facebook.litho.sections.SectionContext
 import com.facebook.litho.sections.widget.RecyclerCollectionComponent
-import com.vjgarcia.chucknorrisjokes.presentation.JokesState
+import com.vjgarcia.chucknorrisjokes.presentation.model.JokesState
 
 @LayoutSpec
 object JokesRootComponentSpec {

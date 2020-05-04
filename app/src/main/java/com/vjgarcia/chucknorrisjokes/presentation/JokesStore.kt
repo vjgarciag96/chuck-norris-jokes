@@ -3,6 +3,7 @@ package com.vjgarcia.chucknorrisjokes.presentation
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import com.vjgarcia.chucknorrisjokes.domain.*
+import com.vjgarcia.chucknorrisjokes.presentation.model.JokesState
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

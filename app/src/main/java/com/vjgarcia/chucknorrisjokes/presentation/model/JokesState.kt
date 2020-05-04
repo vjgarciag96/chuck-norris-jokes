@@ -1,4 +1,4 @@
-package com.vjgarcia.chucknorrisjokes.presentation
+package com.vjgarcia.chucknorrisjokes.presentation.model
 
 data class JokesState(
     val jokes: List<Joke>,

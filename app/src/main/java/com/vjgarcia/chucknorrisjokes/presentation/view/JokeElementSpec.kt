@@ -1,4 +1,4 @@
-package com.vjgarcia.chucknorrisjokes.ui
+package com.vjgarcia.chucknorrisjokes.presentation.view
 
 import android.graphics.Color
 import android.graphics.Typeface
@@ -15,7 +15,7 @@ import com.facebook.yoga.YogaEdge
 object JokeElementSpec {
 
     @OnCreateLayout
-    fun onCreateLayout(c: ComponentContext, @Prop id: String, @Prop text: String): Component {
+    fun onCreateLayout(c: ComponentContext, @Prop text: String): Component {
         val textComponent = Text.create(c)
             .text(text)
             .marginDip(YogaEdge.TOP, 16f)

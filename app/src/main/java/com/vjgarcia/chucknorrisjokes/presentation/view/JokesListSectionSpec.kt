@@ -1,4 +1,4 @@
-package com.vjgarcia.chucknorrisjokes.ui
+package com.vjgarcia.chucknorrisjokes.presentation.view
 
 import android.view.View
 import com.facebook.litho.ClickEvent
@@ -14,8 +14,8 @@ import com.facebook.litho.sections.common.RenderEvent
 import com.facebook.litho.sections.common.SingleComponentSection
 import com.facebook.litho.widget.ComponentRenderInfo
 import com.facebook.litho.widget.RenderInfo
-import com.vjgarcia.chucknorrisjokes.presentation.Joke
-import com.vjgarcia.chucknorrisjokes.presentation.JokesState
+import com.vjgarcia.chucknorrisjokes.presentation.model.Joke
+import com.vjgarcia.chucknorrisjokes.presentation.model.JokesState
 
 @GroupSectionSpec
 object JokesListSectionSpec {
@@ -23,8 +23,7 @@ object JokesListSectionSpec {
     @OnCreateChildren
     fun onCreateChildren(
         sc: SectionContext,
-        @Prop state: JokesState,
-        @Prop onLoadNextClicked: () -> Unit
+        @Prop state: JokesState
     ): Children {
         val childrenBuilder = Children.create()
 
@@ -54,13 +53,12 @@ object JokesListSectionSpec {
     fun onRender(sc: SectionContext, @FromEvent model: Joke): RenderInfo {
         return ComponentRenderInfo.create().component(
             JokeElement.create(sc)
-                .id(model.id)
                 .text(model.text)
         ).build()
     }
 
     @OnEvent(ClickEvent::class)
-    fun onLoadNextClicked(sc: SectionContext, @FromEvent view: View, @Prop onLoadNextClicked: () -> Unit) {
+    fun onLoadNextClicked(sc: SectionContext, @Prop onLoadNextClicked: () -> Unit) {
         onLoadNextClicked()
     }
 }

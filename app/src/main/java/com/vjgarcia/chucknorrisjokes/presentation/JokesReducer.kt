@@ -1,6 +1,9 @@
-package com.vjgarcia.chucknorrisjokes.domain
+package com.vjgarcia.chucknorrisjokes.presentation
 
-import com.vjgarcia.chucknorrisjokes.presentation.JokesState
+import com.vjgarcia.chucknorrisjokes.domain.JokesActionResult
+import com.vjgarcia.chucknorrisjokes.domain.LoadInitialResult
+import com.vjgarcia.chucknorrisjokes.domain.LoadNextResult
+import com.vjgarcia.chucknorrisjokes.presentation.model.JokesState
 
 class JokesReducer {
 

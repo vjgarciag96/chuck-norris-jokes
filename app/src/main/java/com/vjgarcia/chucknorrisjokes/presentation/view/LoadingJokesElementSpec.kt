@@ -1,4 +1,4 @@
-package com.vjgarcia.chucknorrisjokes.ui
+package com.vjgarcia.chucknorrisjokes.presentation.view
 
 import com.facebook.litho.Column
 import com.facebook.litho.Component

@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.vjgarcia.chucknorrisjokes.mappers.toAction
+import com.vjgarcia.chucknorrisjokes.presentation.intent.JokesIntent
+import com.vjgarcia.chucknorrisjokes.presentation.model.JokesState
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 
@@ -20,8 +22,8 @@ class JokesViewModel(
         store.wire().let(disposables::add)
     }
 
-    fun bind(uiEvents: Observable<JokesUiEvent>) {
-        store.bind(uiEvents.map { it.toAction() }, mutableState::setValue).let(disposables::add)
+    fun bind(jokesIntents: Observable<JokesIntent>) {
+        store.bind(jokesIntents.map { it.toAction() }, mutableState::setValue).let(disposables::add)
     }
 
     override fun onCleared() {

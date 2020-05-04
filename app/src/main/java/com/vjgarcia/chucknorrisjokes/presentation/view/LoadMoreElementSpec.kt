@@ -1,4 +1,4 @@
-package com.vjgarcia.chucknorrisjokes.ui
+package com.vjgarcia.chucknorrisjokes.presentation.view
 
 import android.graphics.Color
 import android.graphics.Typeface
