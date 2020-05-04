@@ -1,6 +1,5 @@
 package com.vjgarcia.chucknorrisjokes.presentation.view
 
-import android.view.View
 import com.facebook.litho.ClickEvent
 import com.facebook.litho.annotations.FromEvent
 import com.facebook.litho.annotations.OnEvent
