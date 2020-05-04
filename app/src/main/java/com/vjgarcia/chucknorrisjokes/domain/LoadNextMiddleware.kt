@@ -1,7 +1,6 @@
 package com.vjgarcia.chucknorrisjokes.domain
 
 import com.vjgarcia.chucknorrisjokes.data.JokesRepository
-import com.vjgarcia.chucknorrisjokes.mappers.toJoke
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
@@ -12,7 +11,7 @@ class LoadNextMiddleware(private val jokesRepository: JokesRepository) {
             jokesRepository.random()
                 .toObservable()
                 .subscribeOn(Schedulers.io())
-                .map<LoadNextResult> { joke -> LoadNextResult.Success(joke.toJoke()) }
+                .map<LoadNextResult> { joke -> LoadNextResult.Success(joke) }
                 .onErrorReturn { e -> LoadNextResult.Error(e) }
                 .startWith(LoadNextResult.Loading)
         }
