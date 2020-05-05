@@ -13,8 +13,10 @@ class JokesReducer {
         when {
             actionResult is LoadInitialResult.Loading -> JokesState.Loading
             actionResult is LoadInitialResult.Error -> JokesState.Error
-            actionResult is LoadInitialResult.Success ->
-                JokesState.Content(listOf(actionResult.initialJoke.toJokeItemContent(), JokeItem.LoadMore))
+            previousState is JokesState.Loading && actionResult is LoadInitialResult.Success ->
+                JokesState.Content(actionResult.initialJokes.map { it.toJokeItemContent() } + JokeItem.LoadMore)
+            previousState is JokesState.Content && actionResult is LoadInitialResult.Success ->
+                JokesState.Content(previousState.jokeItems + actionResult.initialJokes.map { it.toJokeItemContent() } + JokeItem.LoadMore)
             previousState is JokesState.Content && actionResult is LoadNextResult.Loading ->
                 previousState.copy(jokeItems = previousState.jokeItems.dropLast(1) + JokeItem.Skeleton)
             previousState is JokesState.Content && actionResult is LoadNextResult.Error ->

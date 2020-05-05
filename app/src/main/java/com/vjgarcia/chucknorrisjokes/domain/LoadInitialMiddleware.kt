@@ -8,8 +8,8 @@ class LoadInitialMiddleware(private val jokesRepository: JokesRepository) {
 
     fun bind(actions: Observable<JokesAction>): Observable<JokesActionResult> {
         return actions.ofType(LoadInitial::class.java).flatMap {
-            jokesRepository.random()
-                .toObservable()
+            jokesRepository.randomStream()
+                .buffer(20)
                 .subscribeOn(Schedulers.io())
                 .map<LoadInitialResult> { joke -> LoadInitialResult.Success(joke) }
                 .onErrorReturn { e -> LoadInitialResult.Error(e) }

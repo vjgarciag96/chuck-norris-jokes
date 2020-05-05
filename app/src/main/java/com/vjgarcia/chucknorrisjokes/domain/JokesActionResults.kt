@@ -7,7 +7,7 @@ sealed class JokesActionResult
 sealed class LoadInitialResult: JokesActionResult() {
     object Loading: LoadInitialResult()
     data class Error(val error: Throwable): LoadInitialResult()
-    data class Success(val initialJoke: Joke): LoadInitialResult()
+    data class Success(val initialJokes: List<Joke>): LoadInitialResult()
 }
 
 sealed class LoadNextResult: JokesActionResult() {
