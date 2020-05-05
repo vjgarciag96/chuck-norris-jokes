@@ -8,4 +8,5 @@
     <color name="background">#FFFFFF</color>
     <color name="skeletonWave">#F6F6F6</color>
     <color name="skeletonBackground">#EEEEEE</color>
+    <color name="textPrimary">#000000</color>
 </resources>

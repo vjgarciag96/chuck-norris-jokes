@@ -2,30 +2,31 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingStart="8dp"
-    android:paddingEnd="8dp">
+    android:layout_height="match_parent">
 
     <com.vjgarcia.chucknorrisjokes.core.SkeletonView
         android:id="@+id/skeleton1"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_margin="8dp"
-        android:paddingTop="8dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:paddingTop="16dp"
         android:paddingBottom="8dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.vjgarcia.chucknorrisjokes.core.SkeletonView
         android:id="@+id/skeleton2"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="120dp"
         android:layout_margin="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/skeleton1" />
 
     <com.vjgarcia.chucknorrisjokes.core.SkeletonView
@@ -35,19 +36,51 @@
         android:layout_margin="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/skeleton2" />
 
     <com.vjgarcia.chucknorrisjokes.core.SkeletonView
         android:id="@+id/skeleton4"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/joke_card_height"
+        android:layout_height="100dp"
         android:layout_margin="8dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/skeleton3" />
 
+    <com.vjgarcia.chucknorrisjokes.core.SkeletonView
+        android:id="@+id/skeleton5"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_margin="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skeleton4" />
+
+    <com.vjgarcia.chucknorrisjokes.core.SkeletonView
+        android:id="@+id/skeleton6"
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+        android:layout_margin="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skeleton5" />
+
+    <com.vjgarcia.chucknorrisjokes.core.SkeletonView
+        android:id="@+id/skeleton7"
+        android:layout_width="match_parent"
+        android:layout_height="93dp"
+        android:layout_margin="8dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skeleton6" />
 </androidx.constraintlayout.widget.ConstraintLayout>
