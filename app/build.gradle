@@ -20,6 +20,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
     buildTypes {
         debug {
         }
@@ -40,6 +45,7 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.androidLifecycle")
     implementation("androidx.lifecycle:lifecycle-extensions:$rootProject.androidLifecycle")
+    implementation("androidx.core:core-ktx:1.2.0")
 
     implementation("com.squareup.okhttp3:okhttp:4.6.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.9.2")

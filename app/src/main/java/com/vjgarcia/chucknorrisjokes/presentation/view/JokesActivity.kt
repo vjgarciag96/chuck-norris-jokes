@@ -1,7 +1,9 @@
 package com.vjgarcia.chucknorrisjokes.presentation.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import androidx.recyclerview.widget.RecyclerView
 import com.jakewharton.rxrelay2.PublishRelay
 import com.vjgarcia.chucknorrisjokes.R
@@ -26,6 +28,9 @@ class JokesActivity : AppCompatActivity() {
     private val jokesViewModel by viewModel<JokesViewModel>()
     private val jokeAdapter by inject<JokeAdapter> { parametersOf(loadMoreClickListener) }
 
+    private lateinit var jokesSkeleton: View
+    private lateinit var jokesRecyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jokes)
@@ -39,11 +44,14 @@ class JokesActivity : AppCompatActivity() {
     }
 
     private fun setUpView() {
-        val jokesRecyclerView = findViewById<RecyclerView>(R.id.jokes)
+        jokesRecyclerView = findViewById(R.id.jokes)
         jokesRecyclerView.adapter = jokeAdapter
+        jokesSkeleton = findViewById(R.id.jokesSkeleton)
     }
 
     private fun onJokesState(jokesState: JokesState) {
+        jokesSkeleton.isGone = !jokesState.isLoading
+        jokesRecyclerView.isGone = jokesState !is JokesState.Content
         if (jokesState is JokesState.Content) {
             jokeAdapter.submitList(jokesState.jokeItems)
         }

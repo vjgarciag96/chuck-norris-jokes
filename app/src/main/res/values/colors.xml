@@ -6,4 +6,6 @@
 
     <color name="black_overlay">#66000000</color>
     <color name="background">#FFFFFF</color>
+    <color name="skeletonWave">#F6F6F6</color>
+    <color name="skeletonBackground">#EEEEEE</color>
 </resources>

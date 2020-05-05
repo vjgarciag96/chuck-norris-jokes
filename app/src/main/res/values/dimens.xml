@@ -5,4 +5,5 @@
     <dimen name="joke_card_corner_radius">8dp</dimen>
     <dimen name="generic_padding">16dp</dimen>
     <dimen name="joke_card_margin">16dp</dimen>
+    <dimen name="default_skeleton_radius">6dp</dimen>
 </resources>
