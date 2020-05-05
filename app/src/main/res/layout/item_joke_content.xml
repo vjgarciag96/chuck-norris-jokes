@@ -2,20 +2,16 @@
 <androidx.cardview.widget.CardView
     android:id="@+id/card"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/joke_card_width"
-    android:layout_height="@dimen/joke_card_height"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="8dp"
     app:cardCornerRadius="@dimen/joke_card_corner_radius">
-    <ScrollView
-        android:id="@+id/scrollableContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/contentContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <TextView
             android:id="@+id/text"
             android:layout_width="match_parent"
@@ -27,5 +23,4 @@
             tools:text="@tools:sample/lorem/random"
             android:padding="@dimen/generic_padding"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 </androidx.cardview.widget.CardView>

@@ -8,22 +8,46 @@
 
     <com.vjgarcia.chucknorrisjokes.core.SkeletonView
         android:id="@+id/skeleton1"
-        android:layout_width="@dimen/joke_card_width"
-        android:layout_height="@dimen/joke_card_height"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
         android:layout_margin="8dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <com.vjgarcia.chucknorrisjokes.core.SkeletonView
-        android:layout_width="@dimen/joke_card_width"
+        android:id="@+id/skeleton2"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skeleton1" />
+
+    <com.vjgarcia.chucknorrisjokes.core.SkeletonView
+        android:id="@+id/skeleton3"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skeleton2" />
+
+    <com.vjgarcia.chucknorrisjokes.core.SkeletonView
+        android:id="@+id/skeleton4"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/joke_card_height"
         android:layout_margin="8dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/skeleton1" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/skeleton3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
