@@ -7,7 +7,7 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val presentationModule = module {
-    factory { JokesStore(get(), get(), get()) }
+    single { JokesStore(get(), get(), get()) }
     viewModel { JokesViewModel(get()) }
     factory { JokeItemDiffCallback() }
     factory { (loadMoreClickListener: LoadMoreClickListener) -> JokeAdapter(get(), loadMoreClickListener) }
