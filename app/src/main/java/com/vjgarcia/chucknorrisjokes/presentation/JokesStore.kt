@@ -2,6 +2,7 @@ package com.vjgarcia.chucknorrisjokes.presentation
 
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
+import com.vjgarcia.chucknorrisjokes.data.Joke
 import com.vjgarcia.chucknorrisjokes.domain.*
 import com.vjgarcia.chucknorrisjokes.presentation.model.JokesState
 import io.reactivex.Observable
@@ -16,7 +17,7 @@ class JokesStore(
     private val loadNextMiddleware: LoadNextMiddleware
 ) {
 
-    private val state = BehaviorRelay.createDefault(JokesState.initial())
+    private val state = BehaviorRelay.createDefault<JokesState>(JokesState.Loading)
     private val actionsRelay = PublishRelay.create<JokesAction>()
     private val actionResults = PublishRelay.create<JokesActionResult>()
 

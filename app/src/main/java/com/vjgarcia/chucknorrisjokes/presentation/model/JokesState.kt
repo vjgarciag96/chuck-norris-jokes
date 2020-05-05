@@ -1,16 +1,18 @@
 package com.vjgarcia.chucknorrisjokes.presentation.model
 
-data class JokesState(
-    val jokes: List<Joke>,
-    val isLoading: Boolean,
-    val loadMoreEnabled: Boolean
-) {
-    companion object {
-        fun initial(): JokesState = JokesState(jokes = emptyList(), isLoading = true, loadMoreEnabled = false)
-    }
+sealed class JokesState {
+    object Loading : JokesState()
+    data class Content(val jokeItems: List<JokeItem>) : JokesState()
+    object Error : JokesState()
+
+    val isLoading: Boolean
+        get() = this is Loading
+    val isError: Boolean
+        get() = this is Error
 }
 
-data class Joke(
-    val id: String,
-    val text: String
-)
+sealed class JokeItem {
+    object Skeleton : JokeItem()
+    data class Content(val id: String, val text: String) : JokeItem()
+    object LoadMore : JokeItem()
+}

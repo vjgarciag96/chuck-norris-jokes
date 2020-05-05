@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Chuck Norris Jokes</string>
     <string name="network_error">The network request was intercepted by Chuck Norris. Sorry, try again :(</string>
+    <string name="load_more">Load more</string>
 </resources>
