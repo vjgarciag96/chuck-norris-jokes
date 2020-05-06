@@ -10,15 +10,15 @@
     <include
         android:id="@+id/jokesSkeleton"
         layout="@layout/skeleton_jokes_list"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <ViewStub
         android:id="@+id/jokesErrorViewStub"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:inflatedId="@+id/jokesError"
-        android:visibility="gone"
-        android:layout="@layout/error_jokes_list"/>
+        android:layout="@layout/error_jokes_list"
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/jokes"
@@ -28,6 +28,7 @@
         android:orientation="vertical"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

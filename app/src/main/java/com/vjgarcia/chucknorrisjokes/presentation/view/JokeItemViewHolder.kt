@@ -1,6 +1,7 @@
 package com.vjgarcia.chucknorrisjokes.presentation.view
 
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -26,7 +27,7 @@ class JokeItemViewHolder(
     }
 
     private fun bindLoadMore(itemView: View, loadMoreClickListener: LoadMoreClickListener) {
-        val loadMoreCard = itemView.findViewById<CardView>(R.id.card)
-        loadMoreCard.setOnClickListener { loadMoreClickListener.invoke() }
+        val loadMoreButton = itemView.findViewById<Button>(R.id.loadMore)
+        loadMoreButton.setOnClickListener { loadMoreClickListener.invoke() }
     }
 }
