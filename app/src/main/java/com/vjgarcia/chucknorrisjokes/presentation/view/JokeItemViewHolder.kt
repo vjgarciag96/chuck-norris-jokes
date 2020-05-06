@@ -27,6 +27,6 @@ class JokeItemViewHolder(
 
     private fun bindLoadMore(itemView: View, loadMoreClickListener: LoadMoreClickListener) {
         val loadMoreCard = itemView.findViewById<CardView>(R.id.card)
-        loadMoreCard.setOnClickListener { loadMoreClickListener.onClick() }
+        loadMoreCard.setOnClickListener { loadMoreClickListener.invoke() }
     }
 }

@@ -13,5 +13,5 @@ sealed class LoadInitialResult: JokesActionResult() {
 sealed class LoadNextResult: JokesActionResult() {
     object Loading: LoadNextResult()
     data class Error(val error: Throwable): LoadNextResult()
-    data class Success(val nextJoke: Joke): LoadNextResult()
+    data class Success(val nextJokes: List<Joke>): LoadNextResult()
 }

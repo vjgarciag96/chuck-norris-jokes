@@ -22,7 +22,7 @@ class JokesReducer {
             previousState is JokesState.Content && actionResult is LoadNextResult.Error ->
                 previousState.copy(jokeItems = previousState.jokeItems.dropLast(1) + JokeItem.LoadMore)
             previousState is JokesState.Content && actionResult is LoadNextResult.Success ->
-                previousState.copy(jokeItems = previousState.jokeItems.dropLast(1) + actionResult.nextJoke.toJokeItemContent() + JokeItem.LoadMore)
+                previousState.copy(jokeItems = previousState.jokeItems.dropLast(1) + actionResult.nextJokes.map { it.toJokeItemContent() } + JokeItem.LoadMore)
             else -> error("invalid combination of previousState = $previousState and actionResult = $actionResult")
         }
 }

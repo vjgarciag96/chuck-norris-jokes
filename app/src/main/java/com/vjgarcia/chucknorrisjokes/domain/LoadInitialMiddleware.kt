@@ -8,7 +8,7 @@ class LoadInitialMiddleware(private val jokesRepository: JokesRepository) {
 
     fun bind(actions: Observable<JokesAction>): Observable<JokesActionResult> {
         return actions.ofType(LoadInitial::class.java).flatMap {
-            jokesRepository.randomStream(INITIAL_JOKES_BUFFER)
+            jokesRepository.randomStream(INITIAL_JOKES_BUFFER_SIZE)
                 .buffer(INITIAL_JOKES_WINDOW_SIZE)
                 .subscribeOn(Schedulers.io())
                 .map<LoadInitialResult> { joke -> LoadInitialResult.Success(joke) }
@@ -18,7 +18,7 @@ class LoadInitialMiddleware(private val jokesRepository: JokesRepository) {
     }
 
     private companion object {
-        const val INITIAL_JOKES_BUFFER = 200
+        const val INITIAL_JOKES_BUFFER_SIZE = 200
         const val INITIAL_JOKES_WINDOW_SIZE = 20
     }
 }

@@ -2,4 +2,6 @@
     <string name="app_name">Chuck Norris Jokes</string>
     <string name="network_error">The network request was intercepted by Chuck Norris. Sorry, try again :(</string>
     <string name="load_more">Load more</string>
+    <string name="retry">Retry</string>
+    <string name="jokes_load_error">There was an error loading jokes, please check your internet connection and try again</string>
 </resources>
