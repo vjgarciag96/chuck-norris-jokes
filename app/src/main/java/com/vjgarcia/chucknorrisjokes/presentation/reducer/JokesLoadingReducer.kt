@@ -14,7 +14,7 @@ class JokesLoadingReducer {
             is LoadInitialResult.Error -> JokesModel.from(JokesState.Error)
             is LoadInitialResult.Next -> JokesModel.from(JokesState.Content(
                 jokes = actionResult.jokes.toJokeContentItems(),
-                isLoadingMore = false
+                isLoadingMore = true
             ))
             else -> error("invalid actionResult $actionResult for loading state")
         }
