@@ -13,9 +13,15 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
         buildConfigField("String", "API_ENDPOINT", "\"https://api.chucknorris.io/jokes/\"")
         buildConfigField("String", "RANDOM_PATH", "\"random\"")
+        buildConfigField("int", "INITIAL_JOKES_COUNT", "200")
+        buildConfigField("int", "INITIAL_JOKES_CHUNK_SIZE", "20")
+        buildConfigField("int", "NEXT_JOKES_COUNT", "100")
+        buildConfigField("int", "NEXT_JOKES_CHUNK_SIZE", "20")
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -43,6 +49,7 @@ dependencies {
     implementation("com.google.android.material:material:1.1.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.androidLifecycle")
     implementation("androidx.lifecycle:lifecycle-extensions:$rootProject.androidLifecycle")
     implementation("androidx.core:core-ktx:1.2.0")
@@ -62,6 +69,7 @@ dependencies {
     implementation("org.koin:koin-android:2.1.1")
     implementation("org.koin:koin-android-viewmodel:2.1.1")
 
+    testImplementation("io.mockk:mockk:1.9.3.kotlin12")
     testImplementation("org.junit.jupiter:junit-jupiter:5.5.1")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.1")
     testImplementation("com.squareup.okhttp3:mockwebserver:4.3.1")

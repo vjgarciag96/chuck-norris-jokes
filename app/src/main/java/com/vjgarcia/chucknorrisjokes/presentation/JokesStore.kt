@@ -1,10 +1,13 @@
 package com.vjgarcia.chucknorrisjokes.presentation
 
+import android.util.Log
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
-import com.vjgarcia.chucknorrisjokes.data.Joke
 import com.vjgarcia.chucknorrisjokes.domain.*
+import com.vjgarcia.chucknorrisjokes.presentation.model.JokesEffects
+import com.vjgarcia.chucknorrisjokes.presentation.model.JokesModel
 import com.vjgarcia.chucknorrisjokes.presentation.model.JokesState
+import com.vjgarcia.chucknorrisjokes.presentation.reducer.JokesReducer
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -14,34 +17,49 @@ import io.reactivex.functions.BiFunction
 class JokesStore(
     private val jokesReducer: JokesReducer,
     private val loadInitialMiddleware: LoadInitialMiddleware,
-    private val loadNextMiddleware: LoadNextMiddleware
+    private val loadNextMiddleware: LoadNextMiddleware,
+    private val refreshMiddleware: RefreshMiddleware
 ) {
 
-    private val state = BehaviorRelay.createDefault<JokesState>(JokesState.Loading)
+    private val stateRelay = BehaviorRelay.createDefault<JokesState>(JokesState.Loading)
+    private val effectRelay = PublishRelay.create<JokesEffects>()
     private val actionsRelay = PublishRelay.create<JokesAction>()
-    private val actionResults = PublishRelay.create<JokesActionResult>()
+    private val actionResultsRelay = PublishRelay.create<JokesActionResult>()
 
     fun wire(): Disposable {
         val disposable = CompositeDisposable()
 
-        actionResults
-            .withLatestFrom(state, BiFunction<JokesActionResult, JokesState, JokesState> { actionResult, state ->
+        actionResultsRelay
+            .withLatestFrom(stateRelay, BiFunction<JokesActionResult, JokesState, JokesModel> { actionResult, state ->
                 jokesReducer.reduce(state, actionResult)
             })
             .distinctUntilChanged()
-            .subscribe(state::accept)
+            .subscribe { (state, effect) ->
+                stateRelay.accept(state)
+                effectRelay.accept(effect)
+            }
             .let(disposable::add)
 
-        Observable.merge(loadInitialMiddleware.bind(actionsRelay), loadNextMiddleware.bind(actionsRelay))
-            .subscribe(actionResults::accept)
+        Observable.merge(
+            loadInitialMiddleware.bind(actionsRelay),
+            loadNextMiddleware.bind(actionsRelay),
+            refreshMiddleware.bind(actionsRelay)
+        )
+            .doOnComplete { Log.d("STORE", "completed the actions observable") }
+            .subscribe(actionResultsRelay::accept)
             .let(disposable::add)
 
         return disposable
     }
 
-    fun bind(actions: Observable<JokesAction>, render: (JokesState) -> Unit): Disposable {
+    fun bind(
+        actions: Observable<JokesAction>,
+        render: (JokesState) -> Unit,
+        executeEffects: (JokesEffects) -> Unit
+    ): Disposable {
         val disposable = CompositeDisposable()
-        state.observeOn(AndroidSchedulers.mainThread()).subscribe(render).let(disposable::add)
+        stateRelay.distinctUntilChanged().observeOn(AndroidSchedulers.mainThread()).subscribe(render).let(disposable::add)
+        effectRelay.observeOn(AndroidSchedulers.mainThread()).subscribe(executeEffects).let(disposable::add)
         actions.subscribe(actionsRelay::accept).let(disposable::add)
         return disposable
     }
