@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.jakewharton.rxrelay2.PublishRelay
 import com.vjgarcia.chucknorrisjokes.R
+import com.vjgarcia.chucknorrisjokes.core.exhaustive
 import com.vjgarcia.chucknorrisjokes.presentation.JokesViewModel
 import com.vjgarcia.chucknorrisjokes.presentation.intent.*
 import com.vjgarcia.chucknorrisjokes.presentation.model.JokesEffect
@@ -78,10 +79,13 @@ class JokesActivity : AppCompatActivity() {
     }
 
     private fun onJokesEffects(jokesEffects: JokesEffects) {
-        jokesEffects.values.forEach { effect ->
-            when (effect) {
-                JokesEffect.DisplayRefreshError -> Log.d("Error", "here we should show a snackbar")
-            }
-        }
+        jokesEffects.values.forEach { effect -> onJokesEffect(effect)}
+    }
+    
+    private fun onJokesEffect(jokesEffect: JokesEffect) {
+        when (jokesEffect) {
+            JokesEffect.DisplayRefreshError -> Log.d("Error", "here we should show a snackbar")
+            JokesEffect.DisplayLoadNextError -> Log.d("Error", "here we should show a snackbar")
+        }.exhaustive()
     }
 }
