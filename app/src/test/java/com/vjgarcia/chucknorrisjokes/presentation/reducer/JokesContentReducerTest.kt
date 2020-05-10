@@ -129,88 +129,19 @@ class JokesContentReducerTest {
     }
 
     @Test
-    fun `returns previous content state with isRefreshing set to true when action result is refreshing`() {
+    fun `returns refreshing state with previous jokes true when action result is refreshing`() {
         val anyJokeItems = listOf(anyJoke()).toJokeContentItems()
         val previousState = JokesState.Content(jokes = anyJokeItems, isLoadingMore = false)
 
         val reducedState = sut.reduce(previousState, RefreshResult.Refreshing)
 
-        assertEquals(JokesModel.from(previousState.copy(isRefreshing = true)), reducedState)
-    }
-
-    @Test
-    fun `returns previous content state with isRefreshing set to false and DisplayRefreshError effect when action result is refresh error`() {
-        val anyJokeItems = listOf(anyJoke()).toJokeContentItems()
-        val previousState = JokesState.Content(jokes = anyJokeItems, isLoadingMore = false, isRefreshing = true)
-
-        val reducedState = sut.reduce(previousState, RefreshResult.Error(Exception()))
-
-        assertEquals(
-            JokesModel.from(
-                previousState.copy(isRefreshing = false),
-                JokesEffects.from(JokesEffect.DisplayRefreshError)
-            ),
-            reducedState
-        )
-    }
-
-    @Test
-    fun `returns content state with new loaded jokes, is refreshing and is loading more set to true if previous state was not refreshing and action result is refresh next`() {
-        val anyJokeItems = listOf(anyJoke()).toJokeContentItems()
-        val previousState = JokesState.Content(jokes = anyJokeItems, isLoadingMore = false, isRefreshing = false)
-        val anyFreshJokes = listOf(anyJoke(id = "1"), anyJoke(id = "2"))
-
-        val reducedState = sut.reduce(previousState, RefreshResult.Next(anyFreshJokes))
-
-        assertEquals(
-            JokesModel.from(
-                JokesState.Content(
-                    jokes = anyFreshJokes.toJokeContentItems(),
-                    isLoadingMore = true,
-                    isRefreshing = true
-                )
-            ),
-            reducedState
-        )
-    }
-
-    @Test
-    fun `returns content state with old + new loaded jokes, is refreshing and is loading more set to true if previous state was refreshing and action result is refresh next`() {
-        val anyJokeItems = listOf(anyJoke()).toJokeContentItems()
-        val previousState = JokesState.Content(jokes = anyJokeItems, isLoadingMore = false, isRefreshing = true)
-        val anyFreshJokes = listOf(anyJoke(id = "1"), anyJoke(id = "2"))
-
-        val reducedState = sut.reduce(previousState, RefreshResult.Next(anyFreshJokes))
-
-        assertEquals(
-            JokesModel.from(
-                JokesState.Content(
-                    jokes = anyJokeItems + anyFreshJokes.toJokeContentItems(),
-                    isLoadingMore = true,
-                    isRefreshing = true
-                )
-            ),
-            reducedState
-        )
-    }
-
-    @Test
-    fun `returns previous state with is refreshing and is loading more set to false if action result is refresh complete`() {
-        val anyJokeItems = listOf(anyJoke()).toJokeContentItems()
-        val previousState = JokesState.Content(jokes = anyJokeItems, isLoadingMore = true, isRefreshing = true)
-
-        val reducedState = sut.reduce(previousState, RefreshResult.Complete)
-
-        assertEquals(
-            JokesModel.from(previousState.copy(isLoadingMore = false, isRefreshing = false)),
-            reducedState
-        )
+        assertEquals(JokesModel.from(JokesState.Refreshing.Start(anyJokeItems)), reducedState)
     }
 
     @Test
     fun `throws IllegalStateException if the action result is not valid`() {
         val anyJokeItems = listOf(anyJoke()).toJokeContentItems()
-        val previousState = JokesState.Content(jokes = anyJokeItems, isLoadingMore = true, isRefreshing = true)
+        val previousState = JokesState.Content(jokes = anyJokeItems, isLoadingMore = true)
 
         assertThrows<IllegalStateException> {
             sut.reduce(previousState, LoadInitialResult.Loading)

@@ -12,20 +12,37 @@ data class JokesModel(
 
 sealed class JokesState {
     object Loading : JokesState()
-    data class Content(
-        val jokes: List<JokeItem.Content>,
-        val isRefreshing: Boolean = false,
-        private val isLoadingMore: Boolean
-    ) : JokesState() {
+    data class Content(val jokes: List<JokeItem.Content>, private val isLoadingMore: Boolean) : JokesState() {
         val jokeItems: List<JokeItem>
             get() = jokes + if (isLoadingMore) JokeItem.Skeleton else JokeItem.LoadMore
     }
+
+    sealed class Refreshing : JokesState() {
+        data class Start(
+            val previousJokes: List<JokeItem.Content>
+        ) : Refreshing()
+
+        data class Content(
+            val jokes: List<JokeItem.Content>
+        ) : Refreshing()
+
+        val jokeItems: List<JokeItem>
+            get() = when (this) {
+                is Start -> previousJokes
+                is Content -> jokes
+            }
+    }
+
     object Error : JokesState()
 
     val isLoading: Boolean
         get() = this is Loading
     val isError: Boolean
         get() = this is Error
+    val isRefreshing: Boolean
+        get() = this is Refreshing
+    val hasContent: Boolean
+        get() = this is Content || this is Refreshing
 }
 
 sealed class JokeItem {
@@ -48,5 +65,5 @@ sealed class JokesEffects {
 
 sealed class JokesEffect {
     object DisplayRefreshError : JokesEffect()
-    object DisplayLoadNextError: JokesEffect()
+    object DisplayLoadNextError : JokesEffect()
 }

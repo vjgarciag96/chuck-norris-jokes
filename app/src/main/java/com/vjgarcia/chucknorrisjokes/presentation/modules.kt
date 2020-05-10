@@ -1,9 +1,6 @@
 package com.vjgarcia.chucknorrisjokes.presentation
 
-import com.vjgarcia.chucknorrisjokes.presentation.reducer.JokesContentReducer
-import com.vjgarcia.chucknorrisjokes.presentation.reducer.JokesErrorReducer
-import com.vjgarcia.chucknorrisjokes.presentation.reducer.JokesLoadingReducer
-import com.vjgarcia.chucknorrisjokes.presentation.reducer.JokesReducer
+import com.vjgarcia.chucknorrisjokes.presentation.reducer.*
 import com.vjgarcia.chucknorrisjokes.presentation.view.JokeAdapter
 import com.vjgarcia.chucknorrisjokes.presentation.view.JokeItemDiffCallback
 import com.vjgarcia.chucknorrisjokes.presentation.view.LoadMoreClickListener
@@ -18,5 +15,6 @@ val presentationModule = module {
     factory { JokesLoadingReducer() }
     factory { JokesContentReducer() }
     factory { JokesErrorReducer() }
-    factory { JokesReducer(get(), get(), get()) }
+    factory { JokesRefreshingReducer() }
+    factory { JokesReducer(get(), get(), get(), get()) }
 }

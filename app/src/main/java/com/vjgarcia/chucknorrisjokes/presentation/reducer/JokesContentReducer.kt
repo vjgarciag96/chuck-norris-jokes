@@ -23,9 +23,6 @@ class JokesContentReducer {
             is LoadNextResult.Next -> nextContent(previousState, actionResult.jokes)
             LoadNextResult.Complete -> completed(previousState)
             RefreshResult.Refreshing -> refreshing(previousState)
-            is RefreshResult.Error -> refreshError(previousState)
-            is RefreshResult.Next -> nextRefreshed(previousState, actionResult.freshJokes)
-            RefreshResult.Complete -> refreshCompleted(previousState)
             else -> error("invalid combination of $previousState and $actionResult")
         }
 
@@ -48,24 +45,5 @@ class JokesContentReducer {
         JokesEffects.from(JokesEffect.DisplayLoadNextError)
     )
 
-    private fun refreshing(previousState: JokesState.Content): JokesModel = JokesModel.from(previousState.copy(isRefreshing = true))
-
-    private fun refreshError(previousState: JokesState.Content): JokesModel = JokesModel.from(
-        previousState.copy(isRefreshing = false),
-        JokesEffects.from(JokesEffect.DisplayRefreshError)
-    )
-
-    private fun nextRefreshed(previousState: JokesState.Content, nextFreshJokes: List<Joke>): JokesModel =
-        if (!previousState.isRefreshing) {
-            JokesModel.from(JokesState.Content(
-                jokes = nextFreshJokes.toJokeContentItems(),
-                isRefreshing = true,
-                isLoadingMore = true))
-        } else {
-            nextContent(previousState, nextFreshJokes)
-        }
-
-    private fun refreshCompleted(previousState: JokesState.Content): JokesModel = JokesModel.from(
-        previousState.copy(isRefreshing = false, isLoadingMore = false)
-    )
+    private fun refreshing(previousState: JokesState.Content): JokesModel = JokesModel.from(JokesState.Refreshing.Start(previousState.jokes))
 }

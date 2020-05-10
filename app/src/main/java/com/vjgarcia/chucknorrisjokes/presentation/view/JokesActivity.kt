@@ -63,7 +63,7 @@ class JokesActivity : AppCompatActivity() {
 
     private fun onJokesState(jokesState: JokesState) {
         jokesSkeleton.isGone = !jokesState.isLoading
-        jokesRecyclerView.isGone = jokesState !is JokesState.Content
+        jokesRecyclerView.isGone = !jokesState.hasContent
         if (jokesState.isError && jokesError == null) {
             jokesError = jokesErrorViewStub.inflate().apply {
                 val retryButton = findViewById<Button>(R.id.retry)
@@ -71,17 +71,21 @@ class JokesActivity : AppCompatActivity() {
             }
         }
         jokesError?.isGone = !jokesState.isError
+        jokesRefreshLayout.isRefreshing = jokesState.isRefreshing
+
+        if (jokesState is JokesState.Refreshing) {
+            jokeAdapter.submitList(jokesState.jokeItems)
+        }
 
         if (jokesState is JokesState.Content) {
-            jokesRefreshLayout.isRefreshing = jokesState.isRefreshing
             jokeAdapter.submitList(jokesState.jokeItems)
         }
     }
 
     private fun onJokesEffects(jokesEffects: JokesEffects) {
-        jokesEffects.values.forEach { effect -> onJokesEffect(effect)}
+        jokesEffects.values.forEach { effect -> onJokesEffect(effect) }
     }
-    
+
     private fun onJokesEffect(jokesEffect: JokesEffect) {
         when (jokesEffect) {
             JokesEffect.DisplayRefreshError -> Log.d("Error", "here we should show a snackbar")

@@ -7,7 +7,8 @@ import com.vjgarcia.chucknorrisjokes.presentation.model.JokesState
 class JokesReducer(
     private val jokesLoadingReducer: JokesLoadingReducer,
     private val jokesContentReducer: JokesContentReducer,
-    private val jokesErrorReducer: JokesErrorReducer
+    private val jokesErrorReducer: JokesErrorReducer,
+    private val jokesRefreshingReducer: JokesRefreshingReducer
 ) {
 
     fun reduce(previousState: JokesState, actionResult: JokesActionResult): JokesModel =
@@ -15,5 +16,6 @@ class JokesReducer(
             is JokesState.Loading -> jokesLoadingReducer.reduce(previousState, actionResult)
             is JokesState.Content -> jokesContentReducer.reduce(previousState, actionResult)
             is JokesState.Error -> jokesErrorReducer.reduce(previousState, actionResult)
+            is JokesState.Refreshing -> jokesRefreshingReducer.reduce(previousState, actionResult)
         }
 }

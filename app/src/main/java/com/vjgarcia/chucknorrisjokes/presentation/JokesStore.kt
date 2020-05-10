@@ -45,7 +45,6 @@ class JokesStore(
             loadNextMiddleware.bind(actionsRelay),
             refreshMiddleware.bind(actionsRelay)
         )
-            .doOnComplete { Log.d("STORE", "completed the actions observable") }
             .subscribe(actionResultsRelay::accept)
             .let(disposable::add)
 
