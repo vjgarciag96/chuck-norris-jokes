@@ -9,8 +9,6 @@ import com.vjgarcia.chucknorrisjokes.presentation.model.JokesState
 import junit.framework.TestCase.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import java.lang.Exception
-import java.lang.IllegalStateException
 
 class JokesLoadingReducerTest {
 

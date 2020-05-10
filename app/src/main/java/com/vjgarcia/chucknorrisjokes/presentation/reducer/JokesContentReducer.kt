@@ -36,7 +36,7 @@ class JokesContentReducer {
     }
 
     private fun nextContent(previousState: JokesState.Content, nextJokes: List<Joke>): JokesModel = JokesModel.from(
-        previousState.copy(jokes = previousState.jokes + nextJokes.toJokeContentItems())
+        previousState.copy(jokes = previousState.jokes + nextJokes.toJokeContentItems(), isLoadingMore = true)
     )
 
     private fun completed(previousState: JokesState.Content): JokesModel = JokesModel.from(previousState.copy(isLoadingMore = false))
