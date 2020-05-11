@@ -33,6 +33,7 @@ android {
 
     buildTypes {
         debug {
+            resValue "string", "shared_user_id_for_tests", "vjgarciag96.chuck_norris_jokes.test.id"
         }
         release {
             minifyEnabled false
@@ -73,4 +74,12 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.5.1")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.1")
     testImplementation("com.squareup.okhttp3:mockwebserver:4.3.1")
+
+    androidTestImplementation("androidx.test.ext:junit:1.1.1")
+    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
+    androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.3.1")
+    androidTestImplementation("org.koin:koin-test:2.1.1")
+    androidTestImplementation("androidx.test:rules:1.2.0")
+    androidTestImplementation("com.squareup.rx.idler:rx2-idler:0.10.0")
 }

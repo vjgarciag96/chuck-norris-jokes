@@ -1,6 +1,5 @@
 package com.vjgarcia.chucknorrisjokes.presentation
 
-import android.util.Log
 import com.jakewharton.rxrelay2.BehaviorRelay
 import com.jakewharton.rxrelay2.PublishRelay
 import com.vjgarcia.chucknorrisjokes.domain.*

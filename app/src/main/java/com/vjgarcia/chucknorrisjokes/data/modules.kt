@@ -1,13 +1,14 @@
 package com.vjgarcia.chucknorrisjokes.data
 
 import com.vjgarcia.chucknorrisjokes.BuildConfig
+import com.vjgarcia.chucknorrisjokes.core.KoinConfiguration
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-val dataModule = module {
+val dataModule = module(override = KoinConfiguration.overridable) {
     factory { JokesRepository(get()) }
     factory {
         Retrofit.Builder()
