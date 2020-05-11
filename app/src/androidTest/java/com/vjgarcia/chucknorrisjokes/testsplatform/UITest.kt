@@ -28,9 +28,8 @@ abstract class UITest<T : Activity>(activityClass: Class<T>) : KoinTest {
     private val jokesScreen by inject<JokesScreen>()
     private val mockedApiServer by inject<MockedApiServer>()
 
-    private val instrumentation by lazy { InstrumentationRegistry.getInstrumentation() }
     private val appOverrideModules by lazy {
-        val application = instrumentation.targetContext.applicationContext as ChuckNorrisApp
+        val application = InstrumentationRegistry.getInstrumentation().targetContext.applicationContext as ChuckNorrisApp
         // We reload appModules in every test because otherwise singletons will be kept from one test execution to another
         application.appModules + mockedApiModule(mockedApiServer.url)
     }
