@@ -36,12 +36,14 @@ abstract class UITest<T : Activity>(activityClass: Class<T>) : KoinTest {
 
     @Before
     fun setUp() {
+        mockedApiServer.start()
         loadKoinModules(appOverrideModules)
     }
 
     @After
     fun tearDown() {
         unloadKoinModules(appOverrideModules)
+        mockedApiServer.shutdown()
     }
 
     fun givenThatCurrentScreenIsJokes(): JokesScreen {

@@ -15,7 +15,7 @@ class JokesUiTest : UITest<JokesActivity>(JokesActivity::class.java) {
         jokesScenarios.givenInitialJokes()
 
         givenThatCurrentScreenIsJokes()
-            .verifyJokesDisplayed()
+            .verifyInitialJokesDisplayed()
     }
 
     @Test
@@ -24,5 +24,28 @@ class JokesUiTest : UITest<JokesActivity>(JokesActivity::class.java) {
 
         givenThatCurrentScreenIsJokes()
             .verifyRetryDisplayed()
+    }
+
+    @Test
+    fun loadNextJokesAfterPressingLoadMoreButton() {
+        jokesScenarios.givenInitialJokes()
+        jokesScenarios.givenNextJokes()
+
+        givenThatCurrentScreenIsJokes()
+            .verifyInitialJokesDisplayed()
+            .scrollToLoadMoreButton()
+            .clickOnLoadMoreButton()
+            .verifyNextJokesDisplayed()
+    }
+
+    @Test
+    fun jokesAreRefreshed() {
+        jokesScenarios.givenInitialJokes()
+        jokesScenarios.givenAnyJokesForRefresh()
+
+        givenThatCurrentScreenIsJokes()
+            .verifyInitialJokesDisplayed()
+            .swipeToRefresh()
+            .verifyJokesRefreshed()
     }
 }

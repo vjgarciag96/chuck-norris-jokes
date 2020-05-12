@@ -11,11 +11,11 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 val testModule: Module
-    get() = module {
+    get() = module(override = true) {
         factory { JokesScreen() }
         factory { JokesScenarios(get()) }
-        single { MockWebServer() }
-        factory { MockedApiServer(get()) }
+        factory { MockWebServerProvider() }
+        single { MockedApiServer(get()) }
     }
 
 

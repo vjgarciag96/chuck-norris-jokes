@@ -7,7 +7,7 @@ import io.reactivex.schedulers.Schedulers
 
 class JokesRepository(private val chuckNorrisApiService: ChuckNorrisApiService) {
 
-    fun randomStream(jokesCount: Int): Observable<Joke> = Observable.range(0, jokesCount - 1).flatMap {
+    fun randomStream(jokesCount: Int): Observable<Joke> = Observable.range(0, jokesCount).flatMap {
         random()
             .toObservable()
             .subscribeOn(Schedulers.io())
