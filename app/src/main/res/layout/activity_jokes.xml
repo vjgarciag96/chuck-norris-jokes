@@ -20,15 +20,44 @@
         android:layout="@layout/error_jokes_list"
         android:visibility="gone" />
 
+    <HorizontalScrollView
+        android:id="@+id/scrollableCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/categoriesGroup"
+            style="@style/AppTheme.Widgets.BaseChipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true" />
+    </HorizontalScrollView>
+
+    <View
+        android:id="@+id/categoriesSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/skeletonBackground"
+        app:layout_constraintBottom_toBottomOf="@id/scrollableCategories"
+        app:layout_constraintEnd_toEndOf="@id/scrollableCategories"
+        app:layout_constraintStart_toStartOf="@id/scrollableCategories" />
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/jokesSwipeRefresh"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/scrollableCategories">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/jokes"
@@ -36,7 +65,6 @@
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             android:orientation="vertical"
-            android:paddingTop="8dp"
             android:paddingBottom="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_joke_content" />

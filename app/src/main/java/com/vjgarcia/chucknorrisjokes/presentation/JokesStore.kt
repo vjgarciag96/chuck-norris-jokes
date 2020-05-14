@@ -17,7 +17,8 @@ class JokesStore(
     private val jokesReducer: JokesReducer,
     private val loadInitialMiddleware: LoadInitialMiddleware,
     private val loadNextMiddleware: LoadNextMiddleware,
-    private val refreshMiddleware: RefreshMiddleware
+    private val refreshMiddleware: RefreshMiddleware,
+    private val filterJokesMiddleware: FilterJokesMiddleware
 ) {
 
     private val stateRelay = BehaviorRelay.createDefault<JokesState>(JokesState.Loading)
@@ -42,7 +43,8 @@ class JokesStore(
         Observable.merge(
             loadInitialMiddleware.bind(actionsRelay),
             loadNextMiddleware.bind(actionsRelay),
-            refreshMiddleware.bind(actionsRelay)
+            refreshMiddleware.bind(actionsRelay),
+            filterJokesMiddleware.bind(actionsRelay, stateRelay)
         )
             .subscribe(actionResultsRelay::accept)
             .let(disposable::add)

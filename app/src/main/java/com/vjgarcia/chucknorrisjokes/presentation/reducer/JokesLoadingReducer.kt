@@ -12,10 +12,16 @@ class JokesLoadingReducer {
         when (actionResult) {
             is LoadInitialResult.Loading -> JokesModel.from(previousState)
             is LoadInitialResult.Error -> JokesModel.from(JokesState.Error)
-            is LoadInitialResult.Next -> JokesModel.from(JokesState.Content(
-                jokes = actionResult.jokes.toJokeContentItems(),
-                isLoadingMore = true
-            ))
+            is LoadInitialResult.Next -> {
+                val jokes = actionResult.jokes.toJokeContentItems()
+                JokesModel.from(JokesState.Content(
+                    jokes = jokes,
+                    isLoadingMore = true,
+                    filteredJokes = jokes,
+                    categories = jokes.toCategories(),
+                    selectedCategories = emptyList()
+                ))
+            }
             else -> error("invalid actionResult $actionResult for loading state")
         }
 }

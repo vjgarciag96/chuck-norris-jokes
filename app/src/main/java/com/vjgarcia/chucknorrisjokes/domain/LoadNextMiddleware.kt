@@ -8,7 +8,7 @@ class LoadNextMiddleware(
 
     fun bind(actions: Observable<JokesAction>): Observable<JokesActionResult> =
         loadJokesMiddleware.bind(
-            actions = actions.ofType(LoadNext::class.java),
+            actions = actions.ofType(JokesAction.LoadNext::class.java),
             loading = LoadNextResult.Loading,
             next = { jokes -> LoadNextResult.Next(jokes) },
             complete = LoadNextResult.Complete,

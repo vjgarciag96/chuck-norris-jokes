@@ -12,14 +12,21 @@ data class JokesModel(
 
 sealed class JokesState {
     object Loading : JokesState()
-    data class Content(val jokes: List<JokeItem.Content>, private val isLoadingMore: Boolean) : JokesState() {
-        val jokeItems: List<JokeItem>
-            get() = jokes + if (isLoadingMore) JokeItem.Skeleton else JokeItem.LoadMore
+    data class Content(
+        val jokes: List<JokeItem.Content>,
+        val filteredJokes: List<JokeItem.Content>,
+        val selectedCategories: List<String> = emptyList(),
+        val categories: List<String> = emptyList(),
+        private val isLoadingMore: Boolean
+    ) : JokesState() {
+        val jokeItems: List<JokeItem> = filteredJokes + if (isLoadingMore) JokeItem.Skeleton else JokeItem.LoadMore
     }
 
     sealed class Refreshing : JokesState() {
         data class Start(
-            val previousJokes: List<JokeItem.Content>
+            val previousJokes: List<JokeItem.Content>,
+            val selectedCategories: List<String>,
+            val previousFilteredJokes: List<JokeItem.Content>
         ) : Refreshing()
 
         data class Content(
@@ -47,7 +54,7 @@ sealed class JokesState {
 
 sealed class JokeItem {
     object Skeleton : JokeItem()
-    data class Content(val id: String, val text: String) : JokeItem()
+    data class Content(val id: String, val text: String, val categories: List<String>) : JokeItem()
     object LoadMore : JokeItem()
 }
 

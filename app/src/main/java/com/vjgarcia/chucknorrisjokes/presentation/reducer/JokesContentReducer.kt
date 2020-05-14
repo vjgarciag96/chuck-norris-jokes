@@ -1,10 +1,7 @@
 package com.vjgarcia.chucknorrisjokes.presentation.reducer
 
 import com.vjgarcia.chucknorrisjokes.data.repository.Joke
-import com.vjgarcia.chucknorrisjokes.domain.JokesActionResult
-import com.vjgarcia.chucknorrisjokes.domain.LoadInitialResult
-import com.vjgarcia.chucknorrisjokes.domain.LoadNextResult
-import com.vjgarcia.chucknorrisjokes.domain.RefreshResult
+import com.vjgarcia.chucknorrisjokes.domain.*
 import com.vjgarcia.chucknorrisjokes.mappers.toJokeContentItems
 import com.vjgarcia.chucknorrisjokes.presentation.model.JokesEffect
 import com.vjgarcia.chucknorrisjokes.presentation.model.JokesEffects
@@ -23,6 +20,7 @@ class JokesContentReducer {
             is LoadNextResult.Next -> nextContent(previousState, actionResult.jokes)
             LoadNextResult.Complete -> completed(previousState)
             RefreshResult.Refreshing -> refreshing(previousState)
+            is FilterJokesResult -> JokesModel.from(previousState.copy(filteredJokes = actionResult.filteredJokes, selectedCategories = actionResult.selectedCategories))
             else -> error("invalid combination of $previousState and $actionResult")
         }
 
@@ -33,7 +31,11 @@ class JokesContentReducer {
     }
 
     private fun nextContent(previousState: JokesState.Content, nextJokes: List<Joke>): JokesModel = JokesModel.from(
-        previousState.copy(jokes = previousState.jokes + nextJokes.toJokeContentItems(), isLoadingMore = true)
+        previousState.copy(
+            jokes = previousState.jokes + nextJokes.toJokeContentItems(),
+            filteredJokes = previousState.filteredJokes + nextJokes.toJokeContentItems(),
+            isLoadingMore = true
+        )
     )
 
     private fun completed(previousState: JokesState.Content): JokesModel = JokesModel.from(previousState.copy(isLoadingMore = false))
@@ -45,5 +47,11 @@ class JokesContentReducer {
         JokesEffects.from(JokesEffect.DisplayLoadNextError)
     )
 
-    private fun refreshing(previousState: JokesState.Content): JokesModel = JokesModel.from(JokesState.Refreshing.Start(previousState.jokes))
+    private fun refreshing(previousState: JokesState.Content): JokesModel = JokesModel.from(
+        JokesState.Refreshing.Start(
+            previousState.jokes,
+            previousState.selectedCategories,
+            previousState.filteredJokes
+        )
+    )
 }

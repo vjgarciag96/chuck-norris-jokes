@@ -10,4 +10,5 @@ val domainModule = module(override = KoinConfiguration.overridable) {
     factory { LoadNextMiddleware(get { parametersOf(LoadJokesConfig(BuildConfig.NEXT_JOKES_COUNT, BuildConfig.NEXT_JOKES_CHUNK_SIZE)) }) }
     factory { LoadInitialMiddleware(get { parametersOf(LoadJokesConfig(BuildConfig.INITIAL_JOKES_COUNT, BuildConfig.INITIAL_JOKES_CHUNK_SIZE)) }) }
     factory { RefreshMiddleware(get { parametersOf(LoadJokesConfig(BuildConfig.INITIAL_JOKES_COUNT, BuildConfig.INITIAL_JOKES_CHUNK_SIZE)) }) }
+    factory { FilterJokesMiddleware() }
 }

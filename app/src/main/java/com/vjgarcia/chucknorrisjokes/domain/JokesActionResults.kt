@@ -1,6 +1,7 @@
 package com.vjgarcia.chucknorrisjokes.domain
 
 import com.vjgarcia.chucknorrisjokes.data.repository.Joke
+import com.vjgarcia.chucknorrisjokes.presentation.model.JokeItem
 
 sealed class JokesActionResult
 
@@ -24,3 +25,8 @@ sealed class RefreshResult : JokesActionResult() {
     data class Next(val freshJokes: List<Joke>) : RefreshResult()
     object Complete : RefreshResult()
 }
+
+data class FilterJokesResult(
+    val filteredJokes: List<JokeItem.Content>,
+    val selectedCategories: List<String>
+) : JokesActionResult()

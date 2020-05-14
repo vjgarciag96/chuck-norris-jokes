@@ -8,7 +8,7 @@ class LoadInitialMiddleware(
 
     fun bind(actions: Observable<JokesAction>): Observable<JokesActionResult> =
         loadJokesMiddleware.bind(
-            actions = actions.ofType(LoadInitial::class.java),
+            actions = actions.ofType(JokesAction.LoadInitial::class.java),
             loading = LoadInitialResult.Loading,
             next = { jokes -> LoadInitialResult.Next(jokes) },
             complete = LoadInitialResult.Complete,

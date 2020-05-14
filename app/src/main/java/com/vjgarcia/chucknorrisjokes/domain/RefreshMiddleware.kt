@@ -8,7 +8,7 @@ class RefreshMiddleware(
 
     fun bind(actions: Observable<JokesAction>): Observable<JokesActionResult> =
         loadJokesMiddleware.bind(
-            actions = actions.ofType(Refresh::class.java),
+            actions = actions.ofType(JokesAction.Refresh::class.java),
             loading = RefreshResult.Refreshing,
             next = { jokes -> RefreshResult.Next(jokes) },
             complete = RefreshResult.Complete,
