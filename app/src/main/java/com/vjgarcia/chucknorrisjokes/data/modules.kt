@@ -9,14 +9,17 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 val dataModule = module(override = KoinConfiguration.overridable) {
-    factory { JokesRepository(get()) }
     factory {
         Retrofit.Builder()
             .baseUrl(BuildConfig.API_ENDPOINT)
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(get()))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(OkHttpClient.Builder().build())
             .build()
     }
     factory { get<Retrofit>().create(ChuckNorrisApiService::class.java) }
+    factory { ChuckNorrisStorage(get(), get()) }
+    factory { CategorySelector() }
+    factory { DefaultCategoriesStorage() }
+    factory { JokesRepository(get(), get(), get()) }
 }

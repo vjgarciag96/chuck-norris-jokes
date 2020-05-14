@@ -54,6 +54,7 @@ class JokesActivity : AppCompatActivity() {
     private fun setUpView() {
         jokesRecyclerView = findViewById<RecyclerView>(R.id.jokes).apply {
             adapter = jokeAdapter
+            itemAnimator = null
         }
         jokesRefreshLayout = findViewById<SwipeRefreshLayout>(R.id.jokesSwipeRefresh).apply {
             setOnRefreshListener { jokesIntents.accept(RefreshRequested) }

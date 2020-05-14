@@ -34,9 +34,9 @@ class ChuckNorrisApiServiceIT {
     @Test
     fun `random joke success response`() {
         givenARandomJokeSuccessfulResponse()
-        
+
         val randomJokeResponse = sut.random().test()
-        
+
         randomJokeResponse.assertValue(JokeDto(
             id = "_en05aqcsvuu3v2vopnoga",
             text = "While urinating, Chuck Norris is easily capable of welding titanium.",
@@ -44,10 +44,29 @@ class ChuckNorrisApiServiceIT {
         )).dispose()
     }
 
+    @Test
+    fun `categories success response`() {
+        givenACategoriesSuccessfulResponse()
+
+        val categoriesResponse = sut.categories().test()
+
+        val expectedCategories = listOf("animal", "career", "celebrity", "dev", "explicit", "fashion", "food", "history", "money", "movie", "music", "political", "religion", "science", "sport", "travel")
+        categoriesResponse.assertValue(expectedCategories).dispose()
+    }
+
     private fun givenARandomJokeSuccessfulResponse() {
         val responseBody = """
             {"categories":["science"],"created_at":"2020-01-05 13:42:19.576875","icon_url":"https://assets.chucknorris.host/img/avatar/chuck-norris.png","id":"_en05aqcsvuu3v2vopnoga","updated_at":"2020-01-05 13:42:19.576875","url":"https://api.chucknorris.io/jokes/_en05aqcsvuu3v2vopnoga","value":"While urinating, Chuck Norris is easily capable of welding titanium."}
         """.trimIndent()
+        mockWebServer.enqueue(
+            MockResponse()
+                .setResponseCode(HttpURLConnection.HTTP_OK)
+                .setBody(responseBody)
+        )
+    }
+
+    private fun givenACategoriesSuccessfulResponse() {
+        val responseBody = """["animal","career","celebrity","dev","explicit","fashion","food","history","money","movie","music","political","religion","science","sport","travel"]"""
         mockWebServer.enqueue(
             MockResponse()
                 .setResponseCode(HttpURLConnection.HTTP_OK)

@@ -16,6 +16,7 @@ android {
 
         buildConfigField("String", "API_ENDPOINT", "\"https://api.chucknorris.io/jokes/\"")
         buildConfigField("String", "RANDOM_PATH", "\"random\"")
+        buildConfigField("String", "CATEGORIES_PATH", "\"categories\"")
         buildConfigField("int", "INITIAL_JOKES_COUNT", "200")
         buildConfigField("int", "INITIAL_JOKES_CHUNK_SIZE", "20")
         buildConfigField("int", "NEXT_JOKES_COUNT", "100")
