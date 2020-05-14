@@ -1,16 +1,17 @@
 package com.vjgarcia.chucknorrisjokes.screens
 
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.swipeDown
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToHolder
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.vjgarcia.chucknorrisjokes.R
 import com.vjgarcia.chucknorrisjokes.presentation.view.JokeItemViewHolder
 import com.vjgarcia.chucknorrisjokes.testsplatform.JokeTextAssertion.Companion.withJokeTextAtPosition
 import com.vjgarcia.chucknorrisjokes.testsplatform.JokesLoadMoreViewHolderMatcher.Companion.jokesLoadMore
-import com.vjgarcia.chucknorrisjokes.testsplatform.RecyclerViewItemCountAssertion
 import com.vjgarcia.chucknorrisjokes.testsplatform.RecyclerViewItemCountAssertion.Companion.withItemCount
 
 class JokesScreen {

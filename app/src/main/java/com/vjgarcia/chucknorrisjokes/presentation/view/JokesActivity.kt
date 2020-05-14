@@ -38,6 +38,7 @@ class JokesActivity : AppCompatActivity() {
     private var jokesError: View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jokes)
         setUpViewModel()
