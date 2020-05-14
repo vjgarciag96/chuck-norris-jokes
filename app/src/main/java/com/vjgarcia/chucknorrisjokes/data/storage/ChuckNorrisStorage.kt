@@ -1,6 +1,6 @@
-package com.vjgarcia.chucknorrisjokes.data
+package com.vjgarcia.chucknorrisjokes.data.storage
 
-import com.vjgarcia.chucknorrisjokes.core.KeyValueStorage
+import com.vjgarcia.chucknorrisjokes.core.storage.KeyValueStorage
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 

@@ -3,7 +3,7 @@ package com.vjgarcia.chucknorrisjokes.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.vjgarcia.chucknorrisjokes.core.SingleLiveEvent
+import com.vjgarcia.chucknorrisjokes.core.presentation.SingleLiveEvent
 import com.vjgarcia.chucknorrisjokes.mappers.toAction
 import com.vjgarcia.chucknorrisjokes.presentation.intent.JokesIntent
 import com.vjgarcia.chucknorrisjokes.presentation.model.JokesEffects

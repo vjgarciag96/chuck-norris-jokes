@@ -1,8 +1,7 @@
 package com.vjgarcia.chucknorrisjokes.domain
 
 import com.vjgarcia.chucknorrisjokes.BuildConfig
-import com.vjgarcia.chucknorrisjokes.core.KoinConfiguration
-import com.vjgarcia.chucknorrisjokes.presentation.reducer.JokesReducer
+import com.vjgarcia.chucknorrisjokes.core.ioc.KoinConfiguration
 import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
 

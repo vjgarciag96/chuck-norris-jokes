@@ -1,9 +1,11 @@
-package com.vjgarcia.chucknorrisjokes.core
+package com.vjgarcia.chucknorrisjokes.core.presentation
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.vjgarcia.chucknorrisjokes.R
+import com.vjgarcia.chucknorrisjokes.core.presentation.SkeletonDrawable
+import com.vjgarcia.chucknorrisjokes.core.presentation.SkeletonShape
 
 class SkeletonView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
     init {

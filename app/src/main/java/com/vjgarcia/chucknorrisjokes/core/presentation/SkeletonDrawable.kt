@@ -1,4 +1,4 @@
-package com.vjgarcia.chucknorrisjokes.core
+package com.vjgarcia.chucknorrisjokes.core.presentation
 
 import android.content.Context
 import android.graphics.*

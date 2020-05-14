@@ -1,4 +1,4 @@
-package com.vjgarcia.chucknorrisjokes.data
+package com.vjgarcia.chucknorrisjokes.data.storage
 
 class DefaultCategoriesStorage {
 

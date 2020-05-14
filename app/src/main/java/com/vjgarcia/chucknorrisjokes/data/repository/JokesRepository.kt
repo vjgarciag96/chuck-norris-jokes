@@ -1,5 +1,7 @@
-package com.vjgarcia.chucknorrisjokes.data
+package com.vjgarcia.chucknorrisjokes.data.repository
 
+import com.vjgarcia.chucknorrisjokes.data.network.ChuckNorrisApiService
+import com.vjgarcia.chucknorrisjokes.data.storage.ChuckNorrisStorage
 import com.vjgarcia.chucknorrisjokes.mappers.toJoke
 import io.reactivex.Observable
 import io.reactivex.Single

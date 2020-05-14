@@ -1,7 +1,7 @@
 package com.vjgarcia.chucknorrisjokes.mappers
 
-import com.vjgarcia.chucknorrisjokes.data.Joke
-import com.vjgarcia.chucknorrisjokes.data.JokeDto
+import com.vjgarcia.chucknorrisjokes.data.repository.Joke
+import com.vjgarcia.chucknorrisjokes.data.network.JokeDto
 import com.vjgarcia.chucknorrisjokes.domain.JokesAction
 import com.vjgarcia.chucknorrisjokes.domain.LoadInitial
 import com.vjgarcia.chucknorrisjokes.domain.LoadNext

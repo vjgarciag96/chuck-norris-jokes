@@ -1,6 +1,6 @@
 package com.vjgarcia.chucknorrisjokes.mothers
 
-import com.vjgarcia.chucknorrisjokes.data.Joke
+import com.vjgarcia.chucknorrisjokes.data.repository.Joke
 
 const val ANY_ID = "rukaId324234"
 const val ANY_TEXT = "Erase una vez en la Mancha..."

@@ -1,4 +1,4 @@
-package com.vjgarcia.chucknorrisjokes.core
+package com.vjgarcia.chucknorrisjokes.core.presentation
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData

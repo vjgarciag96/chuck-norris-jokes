@@ -7,7 +7,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.vjgarcia.chucknorrisjokes.ChuckNorrisApp
 import com.vjgarcia.chucknorrisjokes.screens.JokesScreen
-import com.vjgarcia.chucknorrisjokes.core.KoinConfiguration
+import com.vjgarcia.chucknorrisjokes.core.ioc.KoinConfiguration
 import org.junit.*
 import org.junit.runner.RunWith
 import org.koin.core.context.loadKoinModules

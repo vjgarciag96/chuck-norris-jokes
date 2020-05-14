@@ -1,6 +1,11 @@
 package com.vjgarcia.chucknorrisjokes.data
 
 import com.vjgarcia.chucknorrisjokes.RxUnitTest
+import com.vjgarcia.chucknorrisjokes.data.network.ChuckNorrisApiService
+import com.vjgarcia.chucknorrisjokes.data.network.JokeDto
+import com.vjgarcia.chucknorrisjokes.data.repository.CategorySelector
+import com.vjgarcia.chucknorrisjokes.data.repository.JokesRepository
+import com.vjgarcia.chucknorrisjokes.data.storage.ChuckNorrisStorage
 import com.vjgarcia.chucknorrisjokes.mappers.toJoke
 import io.mockk.every
 import io.mockk.mockk

@@ -1,7 +1,12 @@
 package com.vjgarcia.chucknorrisjokes.data
 
 import com.vjgarcia.chucknorrisjokes.BuildConfig
-import com.vjgarcia.chucknorrisjokes.core.KoinConfiguration
+import com.vjgarcia.chucknorrisjokes.core.ioc.KoinConfiguration
+import com.vjgarcia.chucknorrisjokes.data.network.ChuckNorrisApiService
+import com.vjgarcia.chucknorrisjokes.data.repository.CategorySelector
+import com.vjgarcia.chucknorrisjokes.data.repository.JokesRepository
+import com.vjgarcia.chucknorrisjokes.data.storage.ChuckNorrisStorage
+import com.vjgarcia.chucknorrisjokes.data.storage.DefaultCategoriesStorage
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit

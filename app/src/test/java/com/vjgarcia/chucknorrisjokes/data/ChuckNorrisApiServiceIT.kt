@@ -1,5 +1,7 @@
 package com.vjgarcia.chucknorrisjokes.data
 
+import com.vjgarcia.chucknorrisjokes.data.network.ChuckNorrisApiService
+import com.vjgarcia.chucknorrisjokes.data.network.JokeDto
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer

@@ -1,4 +1,4 @@
-package com.vjgarcia.chucknorrisjokes.data
+package com.vjgarcia.chucknorrisjokes.data.network
 
 import com.vjgarcia.chucknorrisjokes.BuildConfig
 import io.reactivex.Single

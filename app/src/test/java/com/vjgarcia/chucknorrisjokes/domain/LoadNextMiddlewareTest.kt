@@ -1,8 +1,8 @@
 package com.vjgarcia.chucknorrisjokes.domain
 
 import com.vjgarcia.chucknorrisjokes.RxUnitTest
-import com.vjgarcia.chucknorrisjokes.data.Joke
-import com.vjgarcia.chucknorrisjokes.data.JokesRepository
+import com.vjgarcia.chucknorrisjokes.data.repository.Joke
+import com.vjgarcia.chucknorrisjokes.data.repository.JokesRepository
 import com.vjgarcia.chucknorrisjokes.mothers.anyJoke
 import io.mockk.every
 import io.mockk.mockk

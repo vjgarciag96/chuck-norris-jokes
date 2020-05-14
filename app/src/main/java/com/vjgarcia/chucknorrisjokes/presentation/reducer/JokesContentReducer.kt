@@ -1,6 +1,6 @@
 package com.vjgarcia.chucknorrisjokes.presentation.reducer
 
-import com.vjgarcia.chucknorrisjokes.data.Joke
+import com.vjgarcia.chucknorrisjokes.data.repository.Joke
 import com.vjgarcia.chucknorrisjokes.domain.JokesActionResult
 import com.vjgarcia.chucknorrisjokes.domain.LoadInitialResult
 import com.vjgarcia.chucknorrisjokes.domain.LoadNextResult

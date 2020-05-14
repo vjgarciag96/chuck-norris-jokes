@@ -1,7 +1,7 @@
 package com.vjgarcia.chucknorrisjokes.domain
 
-import com.vjgarcia.chucknorrisjokes.data.Joke
-import com.vjgarcia.chucknorrisjokes.data.JokesRepository
+import com.vjgarcia.chucknorrisjokes.data.repository.Joke
+import com.vjgarcia.chucknorrisjokes.data.repository.JokesRepository
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 

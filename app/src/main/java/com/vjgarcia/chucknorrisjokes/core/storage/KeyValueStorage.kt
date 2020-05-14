@@ -1,4 +1,4 @@
-package com.vjgarcia.chucknorrisjokes.core
+package com.vjgarcia.chucknorrisjokes.core.storage
 
 import android.content.SharedPreferences
 import com.squareup.moshi.Moshi

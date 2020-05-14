@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.vjgarcia.chucknorrisjokes.core.SkeletonView
+    <com.vjgarcia.chucknorrisjokes.core.presentation.SkeletonView
         android:id="@+id/skeleton1"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.vjgarcia.chucknorrisjokes.core.SkeletonView
+    <com.vjgarcia.chucknorrisjokes.core.presentation.SkeletonView
         android:id="@+id/skeleton2"
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/skeleton1" />
 
-    <com.vjgarcia.chucknorrisjokes.core.SkeletonView
+    <com.vjgarcia.chucknorrisjokes.core.presentation.SkeletonView
         android:id="@+id/skeleton3"
         android:layout_width="match_parent"
         android:layout_height="150dp"
@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/skeleton2" />
 
-    <com.vjgarcia.chucknorrisjokes.core.SkeletonView
+    <com.vjgarcia.chucknorrisjokes.core.presentation.SkeletonView
         android:id="@+id/skeleton4"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/skeleton3" />
 
-    <com.vjgarcia.chucknorrisjokes.core.SkeletonView
+    <com.vjgarcia.chucknorrisjokes.core.presentation.SkeletonView
         android:id="@+id/skeleton5"
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -62,7 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/skeleton4" />
 
-    <com.vjgarcia.chucknorrisjokes.core.SkeletonView
+    <com.vjgarcia.chucknorrisjokes.core.presentation.SkeletonView
         android:id="@+id/skeleton6"
         android:layout_width="match_parent"
         android:layout_height="126dp"
@@ -73,7 +73,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/skeleton5" />
 
-    <com.vjgarcia.chucknorrisjokes.core.SkeletonView
+    <com.vjgarcia.chucknorrisjokes.core.presentation.SkeletonView
         android:id="@+id/skeleton7"
         android:layout_width="match_parent"
         android:layout_height="93dp"

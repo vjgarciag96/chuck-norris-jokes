@@ -1,6 +1,6 @@
 package com.vjgarcia.chucknorrisjokes.domain
 
-import com.vjgarcia.chucknorrisjokes.data.Joke
+import com.vjgarcia.chucknorrisjokes.data.repository.Joke
 
 sealed class JokesActionResult
 
